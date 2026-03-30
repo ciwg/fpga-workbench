@@ -178,6 +178,48 @@ Full pinout: [icesugar/src/common/io.pcf](https://github.com/wuxx/icesugar/blob/
 
 ---
 
+---
+
+## What Works and What Doesn't in the Codespace
+
+This Codespace is set up for FPGA development targeting the iCE40UP5K. The target project is the [FPGA Encoder](https://github.com/ciwg/fpga-encoder) — an FPGA-based quadrature encoder counter with an I2C interface. Here's what you can and can't do from the browser.
+
+### What Works
+
+**Writing and editing Verilog.** The Verilog HDL extension provides syntax highlighting, linting, and navigation for `.v` files. Everything you need to write RTL.
+
+**Simulation.** Icarus Verilog (`iverilog`) and VVP are installed. You can compile and run testbenches, generate `.vcd` waveform files, and iterate on your design — all from the terminal.
+
+**Viewing waveforms.** VaporView and Surfer are both installed as VS Code extensions. Click any `.vcd` file and it opens in a tab — no GTKWave, no display server, works fully in the browser. The blinky example generates a `.vcd` you can try right away: `cd icesugar-blinky && make sim`, then open `blinky_tb.vcd`.
+
+**Synthesis and bitstream generation.** Yosys, nextpnr-ice40, and icepack are all available. You can synthesize your design, run place-and-route, and generate a `.bin` bitstream file. The synthesis output also reports resource usage so you can confirm your design fits on the iCE40UP5K.
+
+**Python testbenches with cocotb.** cocotb 2.0.1 and cocotb-bus 0.3.0 are installed. You can write testbenches in Python instead of Verilog, which is especially useful for testing bus protocols like I2C.
+
+### What Doesn't Work
+
+**Flashing the FPGA.** Codespaces run on remote VMs with no USB access. You cannot program the board from the browser. Download the `.bin` file and copy it to the iCELink USB drive on your local machine, or run the devcontainer locally with Docker for the full flow in one place.
+
+**GTKWave.** It's a GUI application that needs a display server. Use VaporView or Surfer instead — they work in the browser and are already installed.
+
+**Hardware-in-the-loop testing.** No physical encoder signals, no I2C probing, no oscilloscope. All testing is simulation-only until you move to local hardware.
+
+**Real-time debugging.** No logic analyzer, no JTAG. Simulation and synthesis reports are your debugging tools in the Codespace.
+
+### What to Do When You Need Hardware
+
+Build in the Codespace, flash locally. The workflow is:
+
+1. Write and simulate in the Codespace until you're confident
+2. Run `make` to generate the `.bin` bitstream
+3. Download the `.bin` file
+4. Copy it to the iCELink USB mass-storage drive on your local machine
+
+Alternatively, run the same devcontainer locally with VS Code + Docker. The `.devcontainer/` config works identically on your own machine and gives you full USB access.
+
+
+---
+
 ## References
 
 - [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build) — the toolchain
