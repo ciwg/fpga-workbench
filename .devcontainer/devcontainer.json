@@ -3,12 +3,25 @@
 
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "containerEnv": {
+    "DECOMK_HOME": "/var/decomk",
+    "DECOMK_LOG_DIR": "/var/log/decomk",
+    "DECOMK_TOOL_MODE": "install",
+    "DECOMK_TOOL_INSTALL_PKG": "github.com/stevegt/decomk/cmd/decomk@latest",
+    "DECOMK_TOOL_REPO": "https://github.com/stevegt/decomk",
+    "DECOMK_CONF_REPO": "https://github.com/computerscienceiscool/workspace-config",
+    "DECOMK_RUN_ARGS": "all"
+  },
+
+  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
   "forwardPorts": [],
 
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {}
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.24.13"
+    }
   },
 
   "customizations": {
