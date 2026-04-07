@@ -10,7 +10,7 @@
     "DECOMK_TOOL_INSTALL_PKG": "github.com/stevegt/decomk/cmd/decomk@latest",
     "DECOMK_TOOL_REPO": "https://github.com/stevegt/decomk",
     "DECOMK_CONF_REPO": "https://github.com/ciwg/workspace-config",
-    "DECOMK_RUN_ARGS": "all"
+    "DECOMK_RUN_ARGS": ""
   },
 
   "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
