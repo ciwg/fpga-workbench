@@ -11,6 +11,12 @@ set -euo pipefail
 DECOMK_HOME="${DECOMK_HOME:-/var/decomk}"
 DECOMK_LOG_DIR="${DECOMK_LOG_DIR:-/var/log/decomk}"
 DECOMK_TOOL_MODE="${DECOMK_TOOL_MODE:-install}"
+
+
+# TODO: pin to a specific decomk version tag or commit once stevegt cuts a
+# stable release. @latest violates reproducibility -- two codespaces created
+# at different times may get different decomk versions. Until pinned, builds
+# are not guaranteed to be identical.
 DECOMK_TOOL_INSTALL_PKG="${DECOMK_TOOL_INSTALL_PKG:-github.com/stevegt/decomk/cmd/decomk@latest}"
 DECOMK_TOOL_REPO="${DECOMK_TOOL_REPO:-https://github.com/stevegt/decomk}"
 
