@@ -29,6 +29,8 @@ make sim      # simulate with iverilog, produces blinky_tb.vcd
 See **[GUIDE.md](GUIDE.md)** for a full walkthrough of the toolchain, pin reference, project ideas, flashing workarounds, and recommended workflow.
 
 ## Tool Versions
+Tool installation is managed by decomk via the shared
+[workspace-config](https://github.com/ciwg/workspace-config) repo.
 
-To update oss-cad-suite, edit `OSS_CAD_DATE` in `.devcontainer/setup.sh`.
+To update oss-cad-suite or cocotb versions, edit the Makefile in workspace-config.
 Releases: https://github.com/YosysHQ/oss-cad-suite-build/releases
