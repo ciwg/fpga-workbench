@@ -105,4 +105,4 @@ decomk_bin="$(resolve_decomk_binary)" || {
 }
 
 # shellcheck disable=SC2086
-"$decomk_bin" run ${DECOMK_RUN_ARGS:-}
+"$decomk_bin" run
