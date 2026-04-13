@@ -95,7 +95,7 @@ resolve_decomk_binary() {
 }
 
 sudo mkdir -p "$DECOMK_HOME" "$DECOMK_LOG_DIR"
-sudo chown "$(id -u):$(id -g)" "$DECOMK_HOME" "$DECOMK_LOG_DIR"
+sudo chown -R "$(id -u):$(id -g)" "$DECOMK_HOME" "$DECOMK_LOG_DIR"
 
 install_decomk
 sync_git_repo "${DECOMK_CONF_REPO:-}" "$DECOMK_HOME/conf"
