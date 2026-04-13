@@ -1,7 +1,10 @@
 {
   "name": "FPGA Development",
 
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  // TODO: once the gold image (workspace-base) is built and pushed,
+  // point this at ghcr.io/ciwg/workspace-base:blockN. For now we use
+  // the same pinned Microsoft base that workspace-base builds FROM.
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu@sha256:4bcb1b466771b1ba1ea110e2a27daea2f6093f9527fb75ee59703ec89b5561cb",
 
   "containerEnv": {
     "DECOMK_HOME": "/var/decomk",
@@ -10,19 +13,12 @@
     "DECOMK_TOOL_INSTALL_PKG": "github.com/stevegt/decomk/cmd/decomk@latest",
     "DECOMK_TOOL_REPO": "https://github.com/stevegt/decomk",
     "DECOMK_CONF_REPO": "https://github.com/ciwg/workspace-config",
-    "DECOMK_RUN_ARGS": ""
+    "DECOMK_RUN_ARGS": "all"
   },
 
   "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
   "forwardPorts": [],
-
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/devcontainers/features/go:1": {
-      "version": "1.24.13"
-    }
-  },
 
   "customizations": {
     "vscode": {
