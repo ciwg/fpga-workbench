@@ -20,6 +20,10 @@
 
   "forwardPorts": [],
 
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": { "version": "1.24.13" }
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
