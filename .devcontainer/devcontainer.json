@@ -1,10 +1,9 @@
 {
   "name": "FPGA Development",
 
-  // TODO: once the gold image (workspace-base) is built and pushed,
-  // point this at ghcr.io/ciwg/workspace-base:blockN. For now we use
-  // the same pinned Microsoft base that workspace-base builds FROM.
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu@sha256:4bcb1b466771b1ba1ea110e2a27daea2f6093f9527fb75ee59703ec89b5561cb",
+  // Gold image: built from workspace-base, contains base OS + Go + decomk
+  // + TOOLS + GO + PYTHON. Pulled directly; no features needed to bootstrap.
+  "image": "ghcr.io/computerscienceiscool/workspace-base:block0-2026-04-12",
 
   "containerEnv": {
     "DECOMK_HOME": "/var/decomk",
@@ -19,10 +18,6 @@
   "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
   "forwardPorts": [],
-
-  "features": {
-    "ghcr.io/devcontainers/features/go:1": { "version": "1.24.13" }
-  },
 
   "customizations": {
     "vscode": {
