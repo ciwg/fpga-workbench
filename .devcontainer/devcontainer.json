@@ -1,21 +1,27 @@
 {
   "name": "FPGA Development",
 
-  // Gold image: built from workspace-base, contains base OS + Go + decomk
-  // + TOOLS + GO + PYTHON. Pulled directly; no features needed to bootstrap.
-  "image": "ghcr.io/computerscienceiscool/workspace-base:block0-2026-04-12",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
 
   "containerEnv": {
     "DECOMK_HOME": "/var/decomk",
     "DECOMK_LOG_DIR": "/var/log/decomk",
-    "DECOMK_TOOL_MODE": "install",
-    "DECOMK_TOOL_INSTALL_PKG": "github.com/stevegt/decomk/cmd/decomk@latest",
-    "DECOMK_TOOL_REPO": "https://github.com/stevegt/decomk",
-    "DECOMK_CONF_REPO": "https://github.com/ciwg/workspace-config",
-    "DECOMK_RUN_ARGS": "all"
+    // Alpha: @latest intentionally unpinned until a stable tag is cut.
+    // See TODO 026.2. Will pin to a specific tag/commit when available.
+    "DECOMK_TOOL_URI": "go:github.com/stevegt/decomk/cmd/decomk@latest",
+    // Alpha: unpinned until workspace-config settles on a ref convention.
+    // See TODO 026.2.
+    "DECOMK_CONF_URI": "git:https://github.com/ciwg/workspace-config",
+    "DECOMK_RUN_ARGS": "INSTALL"
   },
 
-  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+  "remoteUser": "dev",
+
+  "updateContentCommand": "bash .devcontainer/decomk-stage0.sh updateContent",
+  "postCreateCommand": "bash .devcontainer/decomk-stage0.sh postCreate",
 
   "forwardPorts": [],
 
