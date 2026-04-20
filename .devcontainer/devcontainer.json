@@ -15,7 +15,7 @@
     // Alpha: unpinned until workspace-config settles on a ref convention.
     // See TODO 026.2.
     "DECOMK_CONF_URI": "git:https://github.com/ciwg/workspace-config",
-    "DECOMK_RUN_ARGS": "INSTALL"
+    "DECOMK_RUN_ARGS": "SETUP"
   },
 
   "remoteUser": "dev",
