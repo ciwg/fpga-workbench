@@ -1,37 +1,4 @@
 {
   "name": "FPGA Development",
-
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "."
-  },
-
-  "containerEnv": {
-    "DECOMK_HOME": "/var/decomk",
-    "DECOMK_LOG_DIR": "/var/log/decomk",
-    // Alpha: @latest intentionally unpinned until a stable tag is cut.
-    // See TODO 026.2. Will pin to a specific tag/commit when available.
-    "DECOMK_TOOL_URI": "go:github.com/stevegt/decomk/cmd/decomk@latest",
-    // Alpha: unpinned until workspace-config settles on a ref convention.
-    // See TODO 026.2.
-    "DECOMK_CONF_URI": "git:https://github.com/ciwg/workspace-config",
-    "DECOMK_RUN_ARGS": "SETUP"
-  },
-
-  "remoteUser": "dev",
-
-  "updateContentCommand": "bash .devcontainer/decomk-stage0.sh updateContent",
-  "postCreateCommand": "bash .devcontainer/decomk-stage0.sh postCreate",
-
-  "forwardPorts": [],
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "mshr-h.veriloghdl",
-        "lramseyer.vaporview",
-        "surfer-project.surfer"
-      ]
-    }
-  }
+  "image": "ghcr.io/ciwg/decomk-conf-cswg:main"
 }
